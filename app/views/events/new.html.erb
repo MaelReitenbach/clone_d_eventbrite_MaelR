@@ -1,0 +1,53 @@
+  <div class="all">
+
+   <%= form_tag url_for(action: 'create'), method: "post" do %>
+   <% if @event.errors.any? %>
+
+   <div class="alert alert-danger" role="alert">
+    <p>Nous n'avons pas réussi à créer l'évènement' pour la (ou les) raison(s) suivante(s) :</p>
+    <% @event.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  </div>
+  <% end %>
+  <p><strong> Réessaye en respectant bien les conditions ;)</strong></p>
+  <% end %>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <h1 class="h3 mb-3 font-weight-normal text-center" id="Publier">Publier un nouvel évènement</h1>
+        <p>Remplis le formulaire ci-dessous pour publier un évènement !</p>
+        <div class="form-group" >
+          <label class="col-form-label" for="inputDefault">Titre de l'évènement : </label>
+          <input type="text" class="form-control" placeholder="Titre" id="inputDefault" name="title">
+
+          <label class="col-form-label" for="inputDefault">Date : </label>
+          <input type="text" class="form-control" placeholder="Date" id="inputDefault" name="start_date">
+
+          <label class="col-form-label" for="inputDefault">Durée en minutes : </label>
+          <input type="text" class="form-control" placeholder="Durée" id="inputDefault" name="duration">
+
+          <label class="col-form-label" for="inputDefault">Prix :</label>
+          <input type="text" class="form-control" placeholder="Prix" id="inputDefault" name="price">
+
+          <label class="col-form-label" for="inputDefault">Lieu :</label>
+          <input type="text" class="form-control" placeholder="Lieu" id="inputDefault" name="location">
+
+          <label for="exampleTextarea">Description de l'évènement :</label>
+          <textarea class="form-control" id="exampleTextarea" rows="6" name="description"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block btn-lg">Publier l'évènement</button>
+
+
+        <% end %>
+
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>

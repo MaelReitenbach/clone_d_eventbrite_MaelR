@@ -1,0 +1,55 @@
+ 
+<% flash.each do |type, msg| %>
+<div class="alert alert-success">
+	<%= msg %>
+</div>
+<% end %>
+
+<div class="all">
+
+
+	<h3 style="text-align: center;">A quel évènement allez-vous participer prochainement ?</h3>
+	<br>
+
+	<br>
+	<center>
+		<div class="row" >
+
+			<% Event.all.each do |event|%>
+			<div class="col-sm-4">
+				<div class="card text-white bg-secondary mb-3" style="width: 34rem; height: 27rem;">
+
+					<div class="card-header text-center">
+						<h3> <%= event.title.capitalize %></h3> 
+					</div>
+
+					<div class="card-body text-center" >
+						<h5 class="card-title"><strong>Date : </strong><%= event.start_date.strftime("le %d/%m/%Y à %I:%M") %> </h5>
+						<h5 class="card-text">Lieu :<%= event.location %></h5><br>
+						<p class="card-text" style="font-size: 13px;">Description : "<%= event.description %>"</p>
+					</div>
+					<div class="card-footer text-center">
+						<%= button_to "En savoir plus", event_path(event.id), class:"btn btn-primary btn-lg", method:'get' %>
+						<br><br>
+					</div>
+
+				</div>
+				<br>
+<hr class="style15">
+<br>
+
+			</div>
+			<% end %>
+		</div>
+
+		<h3>Si aucun ne vous tente, créez le vôtre !</h3>
+
+		<a class="btn btn-primary btn-lg"<%= link_to "Créer un évènement >>", new_event_path  %></a>
+
+
+	</center>
+
+	
+
+
+</div>

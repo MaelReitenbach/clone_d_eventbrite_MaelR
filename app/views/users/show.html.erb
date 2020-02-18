@@ -1,0 +1,65 @@
+
+
+<h1>Mon profil</h1>
+
+<h3>Mes informations: </h3>
+
+<table class="table" style="width: 40%;">
+	<tbody>
+		<tr class="table-light" >
+			<th scope="row" >Prénom : </th>
+			<td><%= @user.first_name %></td>
+		</tr>
+		<tr class="table-light" >
+			<th scope="row" >Nom : </th>
+			<td><%= @user.last_name %></td>
+		</tr>
+		<tr class="table-light" >
+			<th scope="row">Email : </th>
+			<td><%=  @user.email %></td>
+		</tr>
+		<tr class="table-light">
+			<th scope="row">Description : </th>
+			<td>"<i><%= @user.description %>"</i></td>
+		</tr>
+	</tbody>
+</table><br><br>
+<%= button_to "Modifier mes informations", edit_user_registration_path, class:"btn btn-danger btn-lg", method:"get" %>
+<br><br>
+<!-- liste des event dont il est admin à mettre en forme et ajouter lien-->
+<h3>Les évènements que j'organise :</h3>
+
+<div class="row">
+	<% @events.all.each do |event| %>
+	<div class="col-sm-3">
+		<div class="card text-white bg-secondary mb-3" style="max-width: 20rem;">
+			<div class="card-header"><%= event.title %><br></div>
+			<div class="card-body">
+				<h4 class="card-title"><%= event.start_date %></h4>
+				<%= button_to "Voir le détail", event_path(event.id), class:"btn btn-dark disabled", method:"get" %>
+			</div>
+		</div>
+	</div>
+	<% end %>
+</div>
+
+<h3>Les évènements auxquels je participe :</h3>
+<div class="row">
+	<% @participations.all.each do |participation| %>
+	<div class="col-sm-3">
+		<div class="card text-dark bg-light mb-3" style="max-width: 20rem;">
+			<div class="card-header"><%= participation.event.title%><br></div>
+			<div class="card-body">
+				<h4 class="card-title"><%= participation.event.start_date%></h4>
+				<%= button_to "Voir le détail", event_path(participation.event.id), class:"btn btn-dark disabled", method:"get" %>
+			</div>
+		</div>
+	</div>
+	<% end %>
+</div>
+
+
+
+
+<!-- faire restriction d'accès -->
+

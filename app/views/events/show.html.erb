@@ -1,0 +1,26 @@
+ 
+<center>
+  <div class="card" style="width: 50%;">
+    <img class="card-img-top" src=<%= Faker::LoremFlickr.grayscale_image(size: "650x250", search_terms: ['people']) %> alt="Card image cap">
+    <div class="card-body">
+      <h2 class="card-title"><%= @event.title.capitalize %></h2>
+      <h3 class="card-text">En bref :<i> "<%= @event.description.capitalize %>"</i></h3>
+    </div>
+    <ul class="list-group list-group-flush" style="font-size: 17px;">
+      <li class="list-group-item"><strong>Commence </strong><%= @event.start_date.strftime("le %d/%m/%Y à %I:%M") %></li>
+      <li class="list-group-item"><strong>Termine </strong><%= @event.end_date.strftime("le %d/%m/%Y à %I:%M") %></li>
+      <li class="list-group-item"><strong>Lieu : </strong><%= @event.location %> </li>
+      <li class="list-group-item"><strong>Prix : </strong><%= @event.price %> €</li>
+      <li class="list-group-item"><strong>Proposé par : </strong><%= @event.administrator.first_name %>. <strong>Son email :</strong> <%= @event.administrator.email %></li>
+      <div class="card-footer text-center">
+        <li class="list-group-item"><strong>Nombres d'inscrits : </strong><%= @attendance.count %>
+      </div>
+
+
+
+    </ul>
+
+  </div>
+
+  <a class="btn btn-primary btn-lg"<%= link_to "<< Retour à la liste des évènements", root_path  %></a>
+</center>
